@@ -1,0 +1,62 @@
+Server Side Code (MyServer.java)
+
+// Smruti Deshpande
+import java.io.*;
+import java.net.*;
+
+public class MyServer {
+    public static void main(String[] args) {
+        try {
+            ServerSocket ss = new ServerSocket(6666); // Start server on port 6666
+            System.out.println("Server is running and waiting for a client...");
+
+            Socket s = ss.accept(); // Accepts client connection
+            System.out.println("Client connected.");
+
+            DataInputStream dis = new DataInputStream(s.getInputStream());
+            String str = dis.readUTF(); // Reads message from client
+
+            System.out.println("Message from client: " + str);
+
+            dis.close();
+            s.close();
+            ss.close(); // Close connections
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+
+
+
+Client Side Code (MyClient.java)
+java
+Copy
+Edit
+// Smruti Deshpande
+import java.io.*;
+import java.net.*;
+
+public class MyClient {
+    public static void main(String[] args) {
+        try {
+            Socket s = new Socket("localhost", 6666); // Connect to server
+            System.out.println("Connected to server.");
+
+            DataOutputStream dout = new DataOutputStream(s.getOutputStream());
+            dout.writeUTF("Hello Server"); // Send message
+            dout.flush();
+
+            dout.close();
+            s.close(); // Close connection
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+Compilation and Execution Commands
+
+javac MyServer.java MyClient.java    # Compiles both files
+java MyServer                        # Runs the server
+java MyClient                        # Runs the client
+Note: You must run the server first, then the client.
