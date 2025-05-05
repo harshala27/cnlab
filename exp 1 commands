@@ -1,0 +1,9 @@
+ifconfig
+ping google.com
+tracepath www.youtube.com
+host www.google.com
+nslookup www.google.com
+netstat -an
+ip adder show
+dig www.google.com any
+
