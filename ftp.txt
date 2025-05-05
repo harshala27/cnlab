@@ -1,0 +1,52 @@
+# Step 1: Install ProFTPD Server
+sudo apt-get update
+sudo apt-get -y install proftpd
+
+# Step 2: Configure ProFTPD
+sudo nano /etc/proftpd/proftpd.conf
+# (Modify the configuration as needed)
+
+# Check installed package
+dpkg -l | grep proftpd
+
+# Step 3: Configure FTP User Restrictions
+sudo nano /etc/proftpd/proftpd.conf
+# Ensure to set:
+# RequireValidShell off
+# DefaultRoot ~
+
+# Restrict specific users
+sudo nano /etc/ftpusers
+# (Add usernames to restrict FTP access)
+
+# Step 4: Restart and Enable ProFTPD Service
+sudo systemctl restart proftpd
+sudo systemctl enable proftpd
+sudo systemctl status proftpd
+
+# Step 5: Install FTP Client and Connect
+# Check IP address
+ip a | grep inet
+
+# Check default route
+ip route | grep default
+
+# Check interface config
+ifconfig
+
+# Optional: Install curl
+sudo apt install curl
+
+# Step 6: Transfer Files using FTP
+# Connect to FTP server
+lftp -u username 192.168.52.91
+
+# Once connected:
+pwd
+ls -l
+
+# Upload a file
+put /home/student/ubuntu.txt
+
+# Create a sample file for testing
+echo "Test File" > /home/student/ubuntu.txt
