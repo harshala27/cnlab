@@ -1,0 +1,19 @@
+# Step 1: Telnet Connection Setup
+# Install Telnet server on Ubuntu
+sudo apt-get install telnetd
+
+# Restart the inetd service to activate the Telnet server
+sudo /etc/init.d/openbsd-inetd restart
+
+# Step 2: Telnet Command Execution
+# Use the following command to connect to a remote server using Telnet
+telnet <host_ip_address>
+
+# Example:
+telnet 122.175.140.221
+
+# Step 3: Remote Login via Telnet
+# After connecting, you'll be prompted to enter the username and password
+# Example prompt:
+# login: student
+# password: [enter your password]
