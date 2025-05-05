@@ -1,0 +1,10 @@
+sudo ip addr
+sudo ifconfig
+sudo ip addr add 192.168.52.87/23 dev enp4s0
+suso ip address show enp4s0
+sudo ping 192.168.52.87
+netstat -rn
+sudo route add -net 192.168.55.0 gw 192.168.52.87 netmask 255.255.255.0 dev enp4s0
+sudo route del -net 192.168.55.0 gw 192.168.52.87 netmask 255.255.255.0 dev enp4s0
+sudo route add default gw 192.168.52.87
+sudo route del default gw 192.168.52.87
